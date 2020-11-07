@@ -45,7 +45,7 @@ class CountdownTimer {
     }
 }
 
-const nextCounter = new CountdownTimer('November 4 2020')
+const nextCounter = new CountdownTimer('December 4 2020')
 nextCounter.start()
 
 function updateClockface(time) {
