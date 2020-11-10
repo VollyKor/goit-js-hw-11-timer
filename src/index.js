@@ -17,22 +17,26 @@ class CountdownTimer {
       (this.isActive = isActive);
   }
 
+  getFinalTime() {
+    return new Date(this.finalDate).getTime();
+  }
+
+  getDeltaTime() {
+    let currentTime = Date.now();
+    const deltaTime = this.getFinalTime() - currentTime;
+    updateClockface(deltaTime);
+  }
+
   start() {
     if (this.isActive) {
       return;
     }
 
     this.isActive = true;
-    const finalTime = new Date(this.finalDate);
-    const finalTimeMs = finalTime.getTime();
-    let currentTime = Date.now();
-
-    updateClockface(0);
+    this.getDeltaTime()
 
     this.intervalId = setInterval(() => {
-      currentTime = Date.now();
-      const deltaTime = finalTimeMs - currentTime;
-      updateClockface(deltaTime);
+      this.getDeltaTime()
     }, 1000);
   }
 
